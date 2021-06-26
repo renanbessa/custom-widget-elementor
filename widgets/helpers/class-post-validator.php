@@ -36,7 +36,7 @@ class Post_Validator{
             $this->addMessages('Post title: '. get_the_title($val));
 
         } else {
-            $this->addMessages('ID do post não cadastrado');
+            $this->addMessages('Post ID not registered');
         }
     }
 

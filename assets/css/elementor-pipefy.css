@@ -1,12 +1,41 @@
 .form-pipefy {
-    background: green;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 50px;
+    max-width: 500px;
 }
-.efp-messages {
-    display: none;
+.efp-btn__title {
+    font-size: 20px;
+}
+.efp-btn__submit:hover {
+    background-color: #fff;
+}
+.efp__input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
 }
 .efp-messages--error {
     color: red;
 }
 .efp-messages--success {
-    color: greenyellow;
+    color: green;
+}
+button[type="submit"] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
 }

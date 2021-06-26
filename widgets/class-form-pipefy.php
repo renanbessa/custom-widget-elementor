@@ -62,11 +62,11 @@ class Form_Pipefy extends Widget_Base {
 		$this->add_inline_editing_attributes( 'title', 'none' );
 		?>
 			<form action="./" class="form-pipefy" method="post" enctype="multipart/form-data">
-				<h2>
+				<h2 class="efp-btn__title">
 					<?php echo $this->get_render_attribute_string( 'title' ); ?><?php echo wp_kses( $settings['title'], array() ); ?>
 				</h2>
-				<input type="text" name="postid" id="postid" placeholder="Post ID" aria-label="Campo de inserção ID Post">
-				<button type="submit" id="efp-btn-submit"><?php _e('Submit'); ?></button>
+				<input class="efp__input" type="text" name="postid" id="postid" placeholder="Post ID" aria-label="Campo de inserção ID Post">
+				<button class="efp-btn__submit" type="submit" id="efp-btn-submit"><?php _e('Submit'); ?></button>
 				<div id="efp-messages"></div>
 			</form>
 		<?php
@@ -78,11 +78,11 @@ class Form_Pipefy extends Widget_Base {
 			view.addInlineEditingAttributes( 'title', 'none' );
 			#>
 			<form action="./" class="form-pipefy" method="post" enctype="multipart/form-data">
-				<h2 {{{ view.getRenderAttributeString( 'title' ) }}}>
+				<h2 class="efp-btn__title" {{{ view.getRenderAttributeString( 'title' ) }}}>
 					{{{ settings.title }}}
 				</h2>
-				<input type="text" name="postid" id="postid" placeholder="Post ID" aria-label="Campo de inserção ID Post">
-				<button type="submit"><?php _e('Submit'); ?></button>
+				<input class="efp__input" type="text" name="postid" id="postid" placeholder="Post ID" aria-label="Campo de inserção ID Post">
+				<button class="efp-btn__submit" type="submit"><?php _e('Submit'); ?></button>
 			</form>
 		<?php
 	}
