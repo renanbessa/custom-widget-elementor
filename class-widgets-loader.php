@@ -35,29 +35,11 @@ class Widgets_Loader{
   public function efp_send_data_post(){
     check_ajax_referer('efp_send_data_post', 'security');
 
-		$ok = true;
-		$messages = [];
-
-    $postArray = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-    $postID = $postArray['postid'];
-
-    if ($postArray) {
-        if (in_array("", $postArray)) {
-            $ok = false;
-            $messages[] = 'Preencha todos os campos!';
-
-        } elseif(!filter_var($postID, FILTER_VALIDATE_INT)) {
-            $ok = false;
-            $messages[] = 'Por favor, forneça um ID válido!';
-
-        } elseif('publish' === get_post_status($postID)) {
-            $messages[] = get_the_title($postID);
-
-        } else {
-            $ok = false;
-            $messages[] = 'Não existe post cadastrado com esse ID';
-        }
-    }
+    require_once(__DIR__ . '/widgets/class-post-validator.php');
+    $validation = new Post_Validator($_POST); 
+    $messages = [];
+    $messages[] = $validation->validateForm();
+    $ok = $validation->isSuccess();
 
 		echo json_encode([
 			'ok' => $ok,

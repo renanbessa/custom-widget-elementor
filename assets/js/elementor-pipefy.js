@@ -25,14 +25,11 @@ form.submit.addEventListener('click', (event) => {
 
     const requestData = `action=${efpsettings.action}&security=${efpsettings.security}&postid=${form.postid.value}`;
 
-    console.log(requestData)
-
     request.open('POST', efpsettings.ajax_url); // O object_name é uma variável importada pela função wp_localize_script como array dentro de functions.php
     request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     request.send(requestData);
 
     const handleResponse = (responseObject) => {
-
         while (form.messages.firstChild) {
             form.messages.removeChild(form.messages.firstChild);
         }

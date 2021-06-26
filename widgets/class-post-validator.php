@@ -1,9 +1,11 @@
 <?php
 
+namespace ElementorPipefy\Widgets;
+
 class Post_Validator{
 
     private $data;
-    private $errors = [];
+    private $messages = [];
     private static $fields = ['postid'];
 
     public function __construct($post_data){
@@ -18,22 +20,36 @@ class Post_Validator{
             }
         }
         $this->validatePostID();
-        return $this->errors;
+        return $this->messages;
     }
 
     private function validatePostID(){
         $val = trim($this->data['postid']);
 
-        if(empty($val)){
-            $this->addError('postid', 'Post ID cannot be empty');
+        if (empty($val)){
+            $this->addMessages('Post ID cannot be empty');
+
+        } elseif(!filter_var($val, FILTER_VALIDATE_INT)){
+            $this->addMessages('Post ID must bem a valid ID');
+
+        } elseif('publish' === get_post_status($val)) {
+            $this->addMessages(get_the_title($val));
+
         } else {
-            if(!filter_var($val, FILTER_VALIDATE_INT)) {
-                $this->addError('postid', 'Post ID must bem a valid ID');
-            }
+            $this->addMessages('ID do post não cadastrado');
         }
     }
 
-    private function addError($key, $val){
-        $this->errors[$key] = $val;
+    public function isSuccess(){
+        $val = trim($this->data['postid']);
+        if('publish' === get_post_status($val)){
+            return true;
+        } else {
+            return false;
+        };
+    }
+
+    private function addMessages($val){
+        $this->messages = $val;
     }
 }
