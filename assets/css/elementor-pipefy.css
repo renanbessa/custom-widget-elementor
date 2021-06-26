@@ -1,0 +1,12 @@
+.form-pipefy {
+    background: green;
+}
+.efp-messages {
+    display: none;
+}
+.efp-messages--error {
+    color: red;
+}
+.efp-messages--success {
+    color: greenyellow;
+}
