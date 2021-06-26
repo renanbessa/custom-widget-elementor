@@ -35,7 +35,7 @@ class Widgets_Loader{
   public function efp_send_data_post(){
     check_ajax_referer('efp_send_data_post', 'security');
 
-    require_once(__DIR__ . '/widgets/class-post-validator.php');
+    require_once(__DIR__ . '/widgets/helpers/class-post-validator.php');
     $validation = new Post_Validator($_POST); 
     $messages = [];
     $messages[] = $validation->validateForm();

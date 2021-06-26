@@ -33,7 +33,7 @@ class Post_Validator{
             $this->addMessages('Post ID must bem a valid ID');
 
         } elseif('publish' === get_post_status($val)) {
-            $this->addMessages(get_the_title($val));
+            $this->addMessages('Post title: '. get_the_title($val));
 
         } else {
             $this->addMessages('ID do post não cadastrado');
